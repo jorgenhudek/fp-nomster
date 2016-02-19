@@ -14,8 +14,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.navbar {
+body {
+	background: url(image_path("geometry.png"));
+  font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+
+.navbar-inverse {
 	border-radius: 0px;
+	background: url(image_path("dark_geometric.png"));
+  box-shadow: 0px 1px 3px #2a2a2a;
 }
 
 .box {
