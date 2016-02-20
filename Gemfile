@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+# Add Kaminari for easy pagination
+gem 'kaminari'
+
 # Add Bootstrap 3
 gem 'bootstrap-sass', '~> 3.3.6'
 
