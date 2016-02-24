@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+# Add Simple Form for easy form creation
+gem "simple_form"
 
 # Add Kaminari for easy pagination
 gem 'kaminari'

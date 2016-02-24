@@ -1,3 +1,17 @@
 // Place all the styles related to the places controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-primary, .btn-primary:hover, .btn-primary:focus {
+	background-color: black;
+	border-color: black;
+}
+
+.pagination > li > a, .pagination > li > a:hover, .pagination > li > a:focus {
+  	color: black;
+}
+
+.pagination > .active > a, .pagination > .active > a:hover, .pagination > .active > a:focus {
+	background-color: black;
+	border-color: black;
+}
