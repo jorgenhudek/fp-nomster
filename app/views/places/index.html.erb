@@ -6,6 +6,9 @@
 				<i><%= place.address %></i>
 				<br><br>
 				<p><%= place.description %></p>
+				<% if place.user_id %>
+					<small><%= place.user.email %></small>
+				<% end %>
 			</div>
 		</div>
 	<% end %>
