@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   get "/page/:page" => "places#index"
   root("places#index")
   resources :places

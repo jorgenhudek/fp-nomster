@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+# Add Devise for simple and secure authentication
+gem "devise", ">= 3.2.4"
+
 # Add Simple Form for easy form creation
 gem "simple_form"
 
