@@ -1,4 +1,10 @@
 source 'https://rubygems.org'
+# Add Figaro to facilitate setting environment variables
+gem "figaro", ">= 1.0.0"
+
+# Add Geocoder for easy geocoding
+gem "geocoder"
+
 # Add Devise for simple and secure authentication
 gem "devise", ">= 3.2.4"
 
