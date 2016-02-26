@@ -18,6 +18,10 @@ class PlacesController < ApplicationController
     @place = Place.find(params[:id])
   end
 
+  def edit
+    @place = Place.find(params[:id])  
+  end
+
   private
   def place_creation_params
   	return params.require(:place).permit(:name, :description, :address)
