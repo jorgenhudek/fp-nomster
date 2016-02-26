@@ -10,8 +10,12 @@ class PlacesController < ApplicationController
   end
 
   def create
-  	Place.create(place_params.merge(user_id: current_user.id))
-  	redirect_to root_path
+  	@place = Place.new(place_params.merge(user_id: current_user.id))
+  	if @place.save
+      redirect_to root_path
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def show
@@ -26,8 +30,11 @@ class PlacesController < ApplicationController
   def update
     @place = Place.find(params[:id])
     return render text: "This action is not allowed", status: :forbidden if current_user.id != @place.user_id
-    @place.update_attributes(place_params.merge(user_id: current_user.id))
-    redirect_to place_path(@place)
+    if @place.update_attributes(place_params.merge(user_id: current_user.id))
+      redirect_to place_path(@place)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
