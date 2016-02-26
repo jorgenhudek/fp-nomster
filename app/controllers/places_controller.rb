@@ -10,12 +10,16 @@ class PlacesController < ApplicationController
   end
 
   def create
-  	Place.create(place_params.merge(user_id: current_user.id))
+  	Place.create(place_creation_params.merge(user_id: current_user.id))
   	redirect_to root_path
   end
 
+  def show
+    @place = Place.find(params[:id])
+  end
+
   private
-  def place_params
+  def place_creation_params
   	return params.require(:place).permit(:name, :description, :address)
   end
 end
