@@ -1,6 +1,6 @@
 <h2>Sign up</h2>
-
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+<br>
+<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), wrapper: :vertical_form) do |f| %>
   <%= f.error_notification %>
 
   <div class="form-inputs">
@@ -10,8 +10,8 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Sign up" %>
+    <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
   </div>
 <% end %>
-
+<br>
 <%= render "devise/shared/links" %>
