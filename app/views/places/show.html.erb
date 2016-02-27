@@ -5,6 +5,10 @@
 			<i><%= @place.address %></i>
 			<br><br>
 			<p><%= @place.description %></p>
+ 			<% if @place.longitude.present? && @place.latitude.present? %>
+				<div id="map" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>"></div>
+				<br>
+			<% end %>
 			<% if current_user == @place.user %>
 				<div class="pull-right">
 					<%= link_to "Edit", edit_place_path(@place), class: "btn btn-primary" %>
