@@ -17,6 +17,18 @@
 			<% end %>
 		</div>
 	</div>
+	<div class="row">
+		<div class="box col-xs-10 col-xs-offset-1">
+			<h2>Comments</h2>
+			<br>
+			<% @place.comments.each do |comment| %>
+				<blockquote>
+					<strong><%= comment.rating %></strong> - <%= comment.message -%>
+					<small><%= comment.user.email %></small>
+				</blockquote>
+			<% end %>
+		</div>
+	</div>
 	<%= simple_form_for @comment, wrapper: :vertical_form, url: place_comments_path(@place) do |f| %>
 		<%= f.input :message %>
 		<%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
