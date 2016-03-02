@@ -17,9 +17,9 @@
 			<% end %>
 		</div>
 	</div>
-	<%= simple_form_for @comment, wrapper: :vertical_form, url: "#" do |f| %>
+	<%= simple_form_for @comment, wrapper: :vertical_form, url: place_comments_path(@place) do |f| %>
 		<%= f.input :message %>
-		<%= f.input :rating %>
+		<%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
 		<%= f.submit "Add a comment", class: "btn btn-primary" %>
 	<% end %>
 </div>
