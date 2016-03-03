@@ -17,7 +17,7 @@ function initMap() {
 
 // Call the Google Maps API when the page has finished loading via Turbolinks and the view has a map
 $(document).on("page:change", function() {
-	if ($("#map")) {
+	if ($("#map").length > 0) {
 		$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBRTbj1_EjjM29hykn5ZXfGVsvfSAtCgDo&signed_in=true&callback=initMap")
 	}
 });
