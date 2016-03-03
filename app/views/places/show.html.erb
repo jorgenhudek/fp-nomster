@@ -19,6 +19,8 @@
 	</div>
 	<div class="row">
 		<div class="box col-xs-10 col-xs-offset-1">
+			<!-- This button triggers the comment submission modal -->
+			<button type="button" class="btn btn-primary add-comment-btn" data-toggle="modal" data-target="#myModal">Add Comment</button>
 			<h2>Comments</h2>
 			<br>
 			<% @place.comments.each do |comment| %>
@@ -32,9 +34,26 @@
 			<% end %>
 		</div>
 	</div>
-	<%= simple_form_for @comment, wrapper: :vertical_form, url: place_comments_path(@place) do |f| %>
-		<%= f.input :message %>
-		<%= f.input :rating, collection: Comment::RATING_MAP, include_blank: false %>
-		<%= f.submit "Add a comment", class: "btn btn-primary" %>
-	<% end %>
+</div>
+
+<!-- Comment submission modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Add Your Comment</h4>
+			</div>
+			<div class="modal-body">
+				<%= simple_form_for @comment, wrapper: :vertical_form, url: place_comments_path(@place) do |f| %>
+				<%= f.input :message %>
+				<%= f.input :rating, collection: Comment::RATING_MAP, include_blank: false %>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<%= f.submit "Add Comment", class: "btn btn-primary" %>
+				<% end %>
+			</div>
+		</div>
+	</div>
 </div>

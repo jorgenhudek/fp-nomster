@@ -5,6 +5,7 @@
 .btn-primary, .btn-primary:hover, .btn-primary:focus {
 	background-color: black;
 	border-color: black;
+	outline: none;
 }
 
 .pagination > li > a, .pagination > li > a:hover, .pagination > li > a:focus {
@@ -28,4 +29,8 @@
 
 #map {
 	height: 450px;
+}
+
+.add-comment-btn {
+	float: right;
 }
