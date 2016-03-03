@@ -23,7 +23,10 @@
 			<br>
 			<% @place.comments.each do |comment| %>
 				<blockquote>
-					<strong><%= comment.rating %></strong> - <%= comment.message -%>
+					<% (1..comment.rating).each do %>
+						<span class="glyphicon glyphicon-star"></span>
+					<% end %> 
+					- <%= comment.message -%>
 					<small><%= comment.user.email %></small>
 				</blockquote>
 			<% end %>
@@ -31,7 +34,7 @@
 	</div>
 	<%= simple_form_for @comment, wrapper: :vertical_form, url: place_comments_path(@place) do |f| %>
 		<%= f.input :message %>
-		<%= f.input :rating, collection: [1, 2, 3, 4, 5] %>
+		<%= f.input :rating, collection: Comment::RATING_MAP, include_blank: false %>
 		<%= f.submit "Add a comment", class: "btn btn-primary" %>
 	<% end %>
 </div>
