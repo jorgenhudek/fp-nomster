@@ -46,6 +46,9 @@
 			</div>
 			<%= simple_form_for @comment, wrapper: :vertical_form, url: place_comments_path(@place) do |f| %>
 				<div class="modal-body">
+					<% unless current_user %>
+						<p><strong>You must be signed in to comment</strong></p>
+					<% end %>
 					<%= f.input :message %>
 					<%= f.input :rating, collection: Comment::RATING_MAP, include_blank: false %>
 				</div>
