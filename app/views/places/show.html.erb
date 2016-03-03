@@ -22,7 +22,6 @@
 			<!-- This button triggers the comment submission modal -->
 			<button type="button" class="btn btn-primary add-comment-btn" data-toggle="modal" data-target="#myModal">Add Comment</button>
 			<h2>Comments</h2>
-			<br>
 			<% @place.comments.each do |comment| %>
 				<blockquote>
 					<% (1..comment.rating).each do %>
