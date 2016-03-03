@@ -6,6 +6,7 @@
 			<br><br>
 			<p><%= @place.description %></p>
  			<% if @place.longitude.present? && @place.latitude.present? %>
+ 				<br>
 				<div id="map" data-latitude="<%= @place.latitude %>" data-longitude="<%= @place.longitude %>"></div>
 				<br>
 			<% end %>
@@ -43,16 +44,16 @@
 				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 				<h4 class="modal-title" id="myModalLabel">Add Your Comment</h4>
 			</div>
-			<div class="modal-body">
-				<%= simple_form_for @comment, wrapper: :vertical_form, url: place_comments_path(@place) do |f| %>
-				<%= f.input :message %>
-				<%= f.input :rating, collection: Comment::RATING_MAP, include_blank: false %>
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<%= f.submit "Add Comment", class: "btn btn-primary" %>
-				<% end %>
-			</div>
+			<%= simple_form_for @comment, wrapper: :vertical_form, url: place_comments_path(@place) do |f| %>
+				<div class="modal-body">
+					<%= f.input :message %>
+					<%= f.input :rating, collection: Comment::RATING_MAP, include_blank: false %>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<%= f.submit "Add Comment", class: "btn btn-primary" %>
+				</div>
+			<% end %>
 		</div>
 	</div>
 </div>
