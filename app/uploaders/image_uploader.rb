@@ -24,7 +24,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Process files as they are uploaded:
-  process resize_and_pad: [400, 400, :transparent, "Center"]
+  version :padded do
+    process resize_and_pad: [400, 400, :transparent, "Center"]
+  end
 
   # def scale(width, height)
   #   # do something

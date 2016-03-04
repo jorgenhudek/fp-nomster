@@ -5,10 +5,14 @@
 				<h1><%= link_to place.name, place_path(place) %></h1>
 				<i><%= place.address %></i>
 				<br><br>
+				<% if place.photos.present? %>
+					<%= image_tag place.photos.last.image, class: "highlight-image" %>
+				<% end %>
 				<p><%= place.description %></p>
 				<% if place.user.present? %>
 					<small><%= place.user.email %></small>
 				<% end %>
+				<div class="clearfix"></div>
 				<% if place.comments.present? %>
 					<% comment = place.comments.last %>	
 					<blockquote>
