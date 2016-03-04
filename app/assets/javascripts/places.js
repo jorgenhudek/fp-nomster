@@ -15,9 +15,15 @@ function initMap() {
     });
 }
 
-// Call the Google Maps API when the page has finished loading via Turbolinks and the view has a map
 $(document).on("page:change", function() {
+	// Call the Google Maps API when the page has a map
 	if ($("#map").length > 0) {
-		$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBRTbj1_EjjM29hykn5ZXfGVsvfSAtCgDo&signed_in=true&callback=initMap")
+		$.getScript("https://maps.googleapis.com/maps/api/js?key=AIzaSyBRTbj1_EjjM29hykn5ZXfGVsvfSAtCgDo&signed_in=true&callback=initMap");
 	}
+
+	// Open the photo submission modal on pages where this modal is present and has an error 
+	addPhotoForm = $("#myPhotoModal");
+	if (addPhotoForm.length > 0 && addPhotoForm.find(".has-error").length > 0) {
+		$("[data-target='#myPhotoModal']").click();
+	}	
 });

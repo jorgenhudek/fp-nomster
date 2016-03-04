@@ -8,16 +8,13 @@ class ApplicationController < ActionController::Base
   private
   def store_location
   	session[:previous_path] = request.fullpath unless request.fullpath.include?("/users") || !request.get?
-  	logger.debug "The stored path is: #{session[:previous_path]}"
 	end
 
 	def after_sign_in_path_for(resource_or_scope)
-		logger.debug "The stored path is: #{session[:previous_path]}"
 		return session[:previous_path] || root_path
 	end
 
 	def after_sign_up_path_for(resource_or_scope)
-		logger.debug "The stored path is: #{session[:previous_path]}"
 		return session[:previous_path] || root_path
 	end
 end

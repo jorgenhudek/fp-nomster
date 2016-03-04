@@ -12,7 +12,7 @@ class PlacesController < ApplicationController
   def create
   	@place = Place.new(place_params.merge(user_id: current_user.id))
   	if @place.save
-      redirect_to root_path
+      redirect_to place_path(@place)
     else
       render :new, status: :unprocessable_entity
     end
@@ -21,6 +21,7 @@ class PlacesController < ApplicationController
   def show
     @place = Place.find(params[:id])
     @comment = Comment.new
+    @photo = Photo.new
   end
 
   def edit

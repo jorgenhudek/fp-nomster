@@ -1,6 +1,7 @@
 class Place < ActiveRecord::Base
 	belongs_to :user, inverse_of: :places
 	has_many :comments, inverse_of: :place
+	has_many :photos, inverse_of: :place
 
 	validates :name, presence: true, length: {minimum: 4}
 	validates :address, presence: true

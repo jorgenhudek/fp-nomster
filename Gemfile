@@ -1,4 +1,10 @@
 source 'https://rubygems.org'
+# Allows for CarrierWave image manipulation
+gem "mini_magick"
+
+# Use CarrierWave for easy file upload
+gem "carrierwave"
+
 # Add Figaro to facilitate setting environment variables
 gem "figaro", ">= 1.0.0"
 
