@@ -1,6 +1,10 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Sends mail via MailCatcher
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {address: "localhost", port: 1025}
+
   # Adds Vagrant IP to Web Console to prevent error spam
   config.web_console.whitelisted_ips = '10.0.2.2'
 
