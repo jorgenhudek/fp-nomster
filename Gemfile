@@ -1,4 +1,7 @@
 source 'https://rubygems.org'
+# Used by CarrierWave to connect to Amazon S3 for storage
+gem "fog"
+
 # Allows for CarrierWave image manipulation
 gem "mini_magick"
 
@@ -67,5 +70,5 @@ group :development do
   gem 'web-console', '~> 2.0'
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
-  gem 'spring'
+  # gem 'spring'
 end
