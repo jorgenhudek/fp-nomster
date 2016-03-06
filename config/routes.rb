@@ -4,9 +4,13 @@ Rails.application.routes.draw do
   root("places#index")
   resources :places do
     resources :comments, only: :create
-    resources :photos, only: [:create, :index]
+    resources :photos, only: :create
   end
-  resources :users, only: :show
+  resources :users, only: :show do
+    get "/places/:place_page", action: :show, on: :member
+    get "/comments/:comment_page", action: :show, on: :member
+    get "/places/:place_page/comments/:comment_page", action: :show, on: :member
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

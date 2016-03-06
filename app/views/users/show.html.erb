@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="col-xs-10 col-xs-offset-1 box">
-		<h1>My Nomster SF Profile</h1>
+		<h1>Nomster SF Profile</h1>
 		<br>
 		<div class="row">
 			<div class="col-xs-4">
@@ -11,24 +11,46 @@
 				<h3 class="user-email"><%= @user.email %></h3>
 				<h4>Member Since: <%= @user.created_at.strftime "%B %d, %Y" %></h4>
 				<br>
-				<h4><%= @user_comments.count %> total comments</h4>
+				<h4><%= @user.places.count %> total places</h4>
+				<h4><%= @user.comments.count %> total comments</h4>
 				<h4>
-					<%= @user_comments.select {|comment| comment.rating == 5}.count %> total <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span> reviews
+					<%= @user.comments.select {|comment| comment.rating == 5}.count %> total <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span> reviews
 				</h4>
 			</div>
 		</div>
-		<br><br>
-		<h2 class="text-center">My Comments</h2>
-		<br>
-		<% @user_comments.each do |comment| %>
-			This is a comment on <%= link_to comment.place.name, place_path(comment.place) %>
-			<blockquote class="user-comment">
-				<% (1..comment.rating).each do %>
-					<span class="glyphicon glyphicon-star"></span>
-				<% end %> 
-				- <%= comment.message -%>
-				<small><%= comment.user.email %></small>
-			</blockquote>
+		<% if @user_places.present? %>
+			<br><br>
+			<h2 class="text-center">Places Created</h2>
+			<br>
+			<% @user_places.each do |place| %>
+				<h1><%= link_to place.name, place_path(place) %></h1>
+				<i><%= place.address %></i>
+				<br><br>
+				<% if place.photos.present? %>
+					<%= image_tag place.photos.last.image, class: "highlight-image" %>
+				<% end %>
+				<p><%= place.description %></p>
+				<small><%= place.user.email %></small>
+				<div class="clearfix"></div>
+				<hr>
+			<% end %>
+			<%= paginate @user_places, param_name: "place_page" %>
+		<% end %>
+		<% if @user_comments.present? %>
+			<br><br>
+			<h2 class="text-center">Comments Made</h2>
+			<br>
+			<% @user_comments.each do |comment| %>
+				This is a comment on <%= link_to comment.place.name, place_path(comment.place) %>
+				<blockquote class="user-comment">
+					<% (1..comment.rating).each do %>
+						<span class="glyphicon glyphicon-star"></span>
+					<% end %> 
+					- <%= comment.message -%>
+					<small><%= comment.user.email %></small>
+				</blockquote>
+			<% end %>
+			<%= paginate @user_comments, param_name: "comment_page" %>
 		<% end %>
 	</div>
 </div>
