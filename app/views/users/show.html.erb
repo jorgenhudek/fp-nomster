@@ -1,3 +1,11 @@
 <div class="container-fluid">
-	<h1>Your Nomster SF Profile</h1>
+	<div class="col-xs-10 col-xs-offset-1 box">
+		<h1>Your Nomster SF Profile</h1>
+		<h2><%= @user.email %></h2>
+		<h3>Member Since: <%= @user.created_at.strftime "%B %d, %Y" %></h3>
+		<h4><%= @user_comments.count %> total comments</h4>
+		<h4>
+			<%= @user_comments.select {|comment| comment.rating == 5}.count %> total <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span> reviews
+		</h4>
+	</div>
 </div>
