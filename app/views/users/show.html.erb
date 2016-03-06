@@ -1,6 +1,6 @@
 <div class="container-fluid">
 	<div class="col-xs-10 col-xs-offset-1 box">
-		<h1>Your Nomster SF Profile</h1>
+		<h1>My Nomster SF Profile</h1>
 		<br>
 		<div class="row">
 			<div class="col-xs-4">
@@ -16,6 +16,19 @@
 					<%= @user_comments.select {|comment| comment.rating == 5}.count %> total <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span> reviews
 				</h4>
 			</div>
-		</div class="row">
+		</div>
+		<br><br>
+		<h2 class="text-center">My Comments</h2>
+		<br>
+		<% @user_comments.each do |comment| %>
+			This is a comment on <%= link_to comment.place.name, place_path(comment.place) %>
+			<blockquote class="user-comment">
+				<% (1..comment.rating).each do %>
+					<span class="glyphicon glyphicon-star"></span>
+				<% end %> 
+				- <%= comment.message -%>
+				<small><%= comment.user.email %></small>
+			</blockquote>
+		<% end %>
 	</div>
 </div>
