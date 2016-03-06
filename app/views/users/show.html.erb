@@ -1,11 +1,21 @@
 <div class="container-fluid">
 	<div class="col-xs-10 col-xs-offset-1 box">
 		<h1>Your Nomster SF Profile</h1>
-		<h2><%= @user.email %></h2>
-		<h3>Member Since: <%= @user.created_at.strftime "%B %d, %Y" %></h3>
-		<h4><%= @user_comments.count %> total comments</h4>
-		<h4>
-			<%= @user_comments.select {|comment| comment.rating == 5}.count %> total <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span> reviews
-		</h4>
+		<br>
+		<div class="row">
+			<div class="col-xs-4">
+				<%= image_tag "user_logo.svg", class: "user-logo" %>
+			</div>
+			<div class="col-xs-8 text-center">
+				<br>
+				<h3 class="user-email"><%= @user.email %></h3>
+				<h4>Member Since: <%= @user.created_at.strftime "%B %d, %Y" %></h4>
+				<br>
+				<h4><%= @user_comments.count %> total comments</h4>
+				<h4>
+					<%= @user_comments.select {|comment| comment.rating == 5}.count %> total <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span> reviews
+				</h4>
+			</div>
+		</div class="row">
 	</div>
 </div>
